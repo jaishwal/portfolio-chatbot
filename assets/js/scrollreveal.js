@@ -6,6 +6,7 @@ const srtop = ScrollReveal({
     reset: true
 });
 
+
 /* SCROLL HOME */
 srtop.reveal('.home .content h3', { delay: 200 });
 srtop.reveal('.home .content p', { delay: 200 });

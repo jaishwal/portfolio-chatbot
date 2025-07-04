@@ -39,18 +39,26 @@ $(document).ready(function () {
 
     // <!-- emailjs to mail contact form data -->
     $("#contact-form").submit(function (event) {
-        emailjs.init("RZ1JM84Fn_WBdehUP");
-
-        emailjs.sendForm('service_75l74us', 'template_smaw4ug', '#contact-form')
+        event.preventDefault();  // Default form submit behavior roko
+    
+        emailjs.init("-UuFJ3NwJSV0dyiRn"); // Tumhara EmailJS Public key
+    
+        var formData = {
+            name: $("#contact-form input[name='name']").val(),
+            email: $("#contact-form input[name='email']").val(),
+            phone: $("#contact-form input[name='phone']").val(),
+            message: $("#contact-form textarea[name='message']").val()
+        };
+    
+        emailjs.send('service_uaq893s', 'template_hcpgugi', formData)
             .then(function (response) {
                 console.log('SUCCESS!', response.status, response.text);
                 document.getElementById("contact-form").reset();
-                alert("Form Submitted Successfully");
+                alert("Form Submitted Successfully!");
             }, function (error) {
                 console.log('FAILED...', error);
                 alert("Form Submission Failed! Try Again");
             });
-        event.preventDefault();
     });
     // <!-- emailjs to mail contact form data -->
 
@@ -58,7 +66,7 @@ $(document).ready(function () {
 
 // <!-- typed js effect starts -->
 var typed = new Typed(".typing-text", {
-    strings: ["frontend development", "web designing", "Java Developer", "web development"],
+    strings: ["frontend development", "Java Developer", "full stack development", "Web Developer"],
     loop: true,
     typeSpeed: 50,
     backSpeed: 25,
